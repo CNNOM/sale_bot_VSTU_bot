@@ -5,6 +5,9 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.io.InputStream;
+import java.util.Properties;
+
 public class TelegramBot extends TelegramLongPollingBot {
 
     @Override
@@ -35,6 +38,12 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return "7472746068:AAG-Uj1CvFFtLiO9r8agC4o5dsGx1XUeZ3I"; // Your bot token
+        try (InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties")) {
+            Properties prop = new Properties();
+            prop.load(input);
+            return prop.getProperty("TELEGRAM_BOT_TOKEN");
+        } catch (Exception e) {
+            throw new RuntimeException("Не удалось загрузить токен из config.properties", e);
+        }
     }
 }
