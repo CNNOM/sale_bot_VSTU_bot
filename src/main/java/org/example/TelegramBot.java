@@ -31,6 +31,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         return "YourBotName"; // Replace with your bot's username
     }
 
+
     @Override
     public String getBotToken() {
         return "7472746068:AAG-Uj1CvFFtLiO9r8agC4o5dsGx1XUeZ3I"; // Your bot token
