@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.wb.WildberriesApiClient;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -49,11 +50,11 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "YourBotName"; // Replace with your bot's username
+        return "sale_bot_VSTU";
     }
 
     @Override
     public String getBotToken() {
-        return "7472746068:AAG-Uj1CvFFtLiO9r8agC4o5dsGx1XUeZ3I"; // Your bot token
+        return "7472746068:AAG-Uj1CvFFtLiO9r8agC4o5dsGx1XUeZ3I";
     }
 }

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.wb;
 
 import java.io.IOException;
 import java.net.URI;
@@ -36,7 +36,7 @@ public class WildberriesApiClient {
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
         if (response.statusCode() == 200) {
-            System.out.println("Raw response: " + response.body()); // Логирование ответа
+            System.out.println("Raw response: " + response.body());
             return parseProducts(response.body());
         } else {
             return "Ошибка при поиске товара. Код: " + response.statusCode() +

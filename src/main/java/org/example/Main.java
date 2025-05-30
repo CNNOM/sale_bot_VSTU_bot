@@ -12,9 +12,8 @@ public class Main {
                 botsApi.registerBot(new TelegramBot());
                 System.out.println("Bot started successfully!");
 
-                // Бесконечный цикл для поддержания работы программы
                 while (true) {
-                    Thread.sleep(1000); // Чтобы не нагружать CPU
+                    Thread.sleep(1000);
                 }
             } catch (TelegramApiException e) {
                 if (e.getMessage().contains("Error removing old webhook")) {
