@@ -8,9 +8,25 @@ public class Main {
     public static void main(String[] args) {
         try {
             TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
-            botsApi.registerBot(new TelegramBot());
-            System.out.println("Bot started successfully!");
-        } catch (TelegramApiException e) {
+            try {
+                botsApi.registerBot(new TelegramBot());
+                System.out.println("Bot started successfully!");
+
+                // Бесконечный цикл для поддержания работы программы
+                while (true) {
+                    Thread.sleep(1000); // Чтобы не нагружать CPU
+                }
+            } catch (TelegramApiException e) {
+                if (e.getMessage().contains("Error removing old webhook")) {
+                    System.out.println("Bot started (webhook was not set)");
+                    while (true) {
+                        Thread.sleep(1000);
+                    }
+                } else {
+                    throw e;
+                }
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
